@@ -7,6 +7,7 @@
     var speedMult = 0.7;
     // this is the friction which will slow down the map. Must be less than 1
     var friction = 0.99;
+    var mapScale = 200;
 
     window.onload = function () {
         game = new Phaser.Game("100%", "100%", Phaser.AUTO, "");
@@ -145,8 +146,8 @@
             // send drop to server
             var mapDrop = {
                 identifier: 'cactus',
-                x: Math.abs(this.scrollingMap.x) + sprite.x,
-                y: Math.abs(this.scrollingMap.y) + sprite.y
+                x: (Math.abs(this.scrollingMap.x) + sprite.x) / mapScale,
+                y: (Math.abs(this.scrollingMap.y) + sprite.y) / mapScale
             }
             
             hub.invoke('dropEnemy', mapDrop).done(function () {
