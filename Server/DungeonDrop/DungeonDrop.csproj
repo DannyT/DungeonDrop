@@ -102,6 +102,7 @@
     <Content Include="Assets\level-map.jpg" />
     <Content Include="Assets\wyvern.png" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\DungeonDrop - Web Deploy.pubxml" />
     <None Include="Scripts\Vendor\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\dungeonDrop.js" />
     <Content Include="Scripts\Vendor\jquery-1.6.4.js" />
