@@ -62,8 +62,11 @@
             }, this);
 
             
-            this.cactus = game.add.sprite(15, game.world.height - 150, 'cactus');
-            this.cactus.y = game.world.height - this.cactus.height - 15;
+            this.cactus = game.add.sprite(0, 0, 'cactus');
+            this.cactus.anchor.x = 0.5;
+            this.cactus.anchor.y = 0.5;
+            this.cactus.x = (this.cactus.height / 2) + 15;
+            this.cactus.y = game.world.height - (this.cactus.height / 2) - 15;
             this.cactus.inputEnabled = true;
             this.cactus.input.enableDrag();
             this.cactus.events.onDragStart.add(onDragStart, this);
@@ -136,14 +139,17 @@
         var boundsB = sprite.getBounds();
 
         if(Phaser.Rectangle.intersects(boundsA, boundsB)){
-            var tween = game.add.tween(sprite.position).to({ x: sprite.position.x + (sprite.width / 2 / 2), y: sprite.position.y + (sprite.height / 2 / 2) }, 300, Phaser.Easing.Default, true);
             var tween2 = game.add.tween(sprite.scale).to({ x: 0.5, y: 0.5 }, 300, Phaser.Easing.Default, true);
             tween2.onComplete.add(function () { returnIcon(sprite) }, this);
 
             // send drop to server
-            console.log(sprite.x);
-            console.log(sprite.y);
-            hub.invoke('dropEnemy', 'wyvern', sprite.x, sprite.y).done(function () {
+            var mapDrop = {
+                identifier: 'cactus',
+                x: Math.abs(this.scrollingMap.x) + sprite.x,
+                y: Math.abs(this.scrollingMap.y) + sprite.y
+            }
+            
+            hub.invoke('dropEnemy', mapDrop).done(function () {
                 console.log('Enemy drop sent');
             }).fail(function (error) {
                 console.log('Enemy drop faled with error:' + error);
