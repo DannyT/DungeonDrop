@@ -2,6 +2,7 @@
 using System.Collections;
 using SignalR.Client._20;
 using SignalR.Client._20.Hubs;
+using System;
 
 public class SocketController : MonoBehaviour {
 
@@ -29,7 +30,14 @@ public class SocketController : MonoBehaviour {
             Debug.Log("Hello!");
         };
 
-        connection.Start();
+        try {
+            connection.Start();
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
+        
     }
 	
 	// Update is called once per frame

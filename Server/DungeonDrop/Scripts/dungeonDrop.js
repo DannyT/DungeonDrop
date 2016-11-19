@@ -7,7 +7,11 @@
     var speedMult = 0.7;
     // this is the friction which will slow down the map. Must be less than 1
     var friction = 0.99;
-    var mapScale = 200;
+    var world = {
+        length: 16,
+        width: 8
+    };
+    var mapScale = 20;
 
     window.onload = function () {
         game = new Phaser.Game("100%", "100%", Phaser.AUTO, "");
@@ -131,7 +135,6 @@
     function onDragStart(sprite, pointer) {
         // cache start location
         returnToPos = { x: sprite.x, y: sprite.y };
-        console.log(returnToPos);
     }
 
     function onDragStop(sprite, pointer) {
@@ -143,12 +146,16 @@
             var tween2 = game.add.tween(sprite.scale).to({ x: 0.5, y: 0.5 }, 300, Phaser.Easing.Default, true);
             tween2.onComplete.add(function () { returnIcon(sprite) }, this);
 
+            // 1280 x 640 to  1.6 x 0.8 800
+            var scale = this.scrollingMap.width / world.length;
             // send drop to server
             var mapDrop = {
                 identifier: 'cactus',
-                x: (Math.abs(this.scrollingMap.x) + sprite.x) / mapScale,
-                y: (Math.abs(this.scrollingMap.y) + sprite.y) / mapScale
+                x: ((Math.abs(this.scrollingMap.x) + sprite.x) / scale) - (world.length / 2),
+                y: (Math.abs(this.scrollingMap.y) + sprite.y) / scale - (world.width / 2)
             }
+
+            console.log('mapDrop x:' + mapDrop.x + ' y:' + mapDrop.y);
             
             hub.invoke('dropEnemy', mapDrop).done(function () {
                 console.log('Enemy drop sent');
