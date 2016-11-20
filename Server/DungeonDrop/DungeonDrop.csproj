@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\cactus.png" />
-    <Content Include="Assets\level-map.jpg" />
+    <Content Include="Assets\level-map.png" />
     <Content Include="Assets\wyvern.png" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\DungeonDrop - Web Deploy.pubxml" />

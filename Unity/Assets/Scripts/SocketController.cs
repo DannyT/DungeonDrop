@@ -45,7 +45,7 @@ public class SocketController : MonoBehaviour {
 	    if(enemyDto != null)
         {
             Debug.Log("dropping Enemy");
-            Instantiate(enemy, new Vector3(enemyDto.x, 2, enemyDto.y), Quaternion.identity);
+            Instantiate(enemy, new Vector3(enemyDto.x, 1, enemyDto.y), Quaternion.identity);
             enemyDto = null;
         }
 	}
