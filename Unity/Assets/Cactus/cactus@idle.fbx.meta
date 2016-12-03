@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 15b5ad81830713e4e8514ab49534af3f
+timeCreated: 1480805678
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: cactusSmall_A_1
+    100004: cactusSmall_A_2
+    100006: cactusSmall_A_3
+    100008: cactusSmall_A_4
+    100010: cactusSmall_B_1
+    100012: cactusSmall_B_2
+    100014: cactusSmall_B_3
+    100016: cactusSmall_B_4
+    100018: cactusSmall_C_1
+    100020: cactusSmall_C_2
+    100022: cactusSmall_C_3
+    100024: cactusSmall_C_4
+    100026: jnt_L_ankle
+    100028: jnt_L_ball
+    100030: jnt_L_hip
+    100032: jnt_L_knee
+    100034: jnt_L_toes
+    100036: jnt_R_ankle
+    100038: jnt_R_ball
+    100040: jnt_R_hip
+    100042: jnt_R_knee
+    100044: jnt_R_toes
+    100046: jnt_spA
+    100048: jnt_spB
+    100050: jnt_spC
+    100052: jnt_spD
+    100054: Joints
+    400000: //RootNode
+    400002: cactusSmall_A_1
+    400004: cactusSmall_A_2
+    400006: cactusSmall_A_3
+    400008: cactusSmall_A_4
+    400010: cactusSmall_B_1
+    400012: cactusSmall_B_2
+    400014: cactusSmall_B_3
+    400016: cactusSmall_B_4
+    400018: cactusSmall_C_1
+    400020: cactusSmall_C_2
+    400022: cactusSmall_C_3
+    400024: cactusSmall_C_4
+    400026: jnt_L_ankle
+    400028: jnt_L_ball
+    400030: jnt_L_hip
+    400032: jnt_L_knee
+    400034: jnt_L_toes
+    400036: jnt_R_ankle
+    400038: jnt_R_ball
+    400040: jnt_R_hip
+    400042: jnt_R_knee
+    400044: jnt_R_toes
+    400046: jnt_spA
+    400048: jnt_spB
+    400050: jnt_spC
+    400052: jnt_spD
+    400054: Joints
+    7400000: idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: idle
+      firstFrame: 1
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Joints
+        weight: 1
+      - path: Joints/jnt_spA
+        weight: 1
+      - path: Joints/jnt_spA/jnt_L_hip
+        weight: 1
+      - path: Joints/jnt_spA/jnt_L_hip/jnt_L_knee
+        weight: 1
+      - path: Joints/jnt_spA/jnt_L_hip/jnt_L_knee/jnt_L_ankle
+        weight: 1
+      - path: Joints/jnt_spA/jnt_L_hip/jnt_L_knee/jnt_L_ankle/jnt_L_ball
+        weight: 1
+      - path: Joints/jnt_spA/jnt_L_hip/jnt_L_knee/jnt_L_ankle/jnt_L_ball/jnt_L_toes
+        weight: 1
+      - path: Joints/jnt_spA/jnt_R_hip
+        weight: 1
+      - path: Joints/jnt_spA/jnt_R_hip/jnt_R_knee
+        weight: 1
+      - path: Joints/jnt_spA/jnt_R_hip/jnt_R_knee/jnt_R_ankle
+        weight: 1
+      - path: Joints/jnt_spA/jnt_R_hip/jnt_R_knee/jnt_R_ankle/jnt_R_ball
+        weight: 1
+      - path: Joints/jnt_spA/jnt_R_hip/jnt_R_knee/jnt_R_ankle/jnt_R_ball/jnt_R_toes
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_A_1
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_A_1/cactusSmall_A_2
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_A_1/cactusSmall_A_2/cactusSmall_A_3
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_A_1/cactusSmall_A_2/cactusSmall_A_3/cactusSmall_A_4
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_B_1
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_B_1/cactusSmall_B_2
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_B_1/cactusSmall_B_2/cactusSmall_B_3
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_B_1/cactusSmall_B_2/cactusSmall_B_3/cactusSmall_B_4
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_C_1
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_C_1/cactusSmall_C_2
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_C_1/cactusSmall_C_2/cactusSmall_C_3
+        weight: 1
+      - path: Joints/jnt_spA/jnt_spB/jnt_spC/jnt_spD/cactusSmall_C_1/cactusSmall_C_2/cactusSmall_C_3/cactusSmall_C_4
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,139 @@
+fileFormatVersion: 2
+guid: 8c3d19117e42ef546b2e386e8acdd63f
+timeCreated: 1480721644
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: cactus
+    100002: //RootNode
+    100004: cactusSmall_A_1
+    100006: cactusSmall_A_2
+    100008: cactusSmall_A_3
+    100010: cactusSmall_A_4
+    100012: cactusSmall_B_1
+    100014: cactusSmall_B_2
+    100016: cactusSmall_B_3
+    100018: cactusSmall_B_4
+    100020: cactusSmall_C_1
+    100022: cactusSmall_C_2
+    100024: cactusSmall_C_3
+    100026: cactusSmall_C_4
+    100028: jnt_L_ankle
+    100030: jnt_L_ball
+    100032: jnt_L_hip
+    100034: jnt_L_knee
+    100036: jnt_L_toes
+    100038: jnt_R_ankle
+    100040: jnt_R_ball
+    100042: jnt_R_hip
+    100044: jnt_R_knee
+    100046: jnt_R_toes
+    100048: jnt_spA
+    100050: jnt_spB
+    100052: jnt_spC
+    100054: jnt_spD
+    100056: Joints
+    100058: Model
+    400000: cactus
+    400002: //RootNode
+    400004: cactusSmall_A_1
+    400006: cactusSmall_A_2
+    400008: cactusSmall_A_3
+    400010: cactusSmall_A_4
+    400012: cactusSmall_B_1
+    400014: cactusSmall_B_2
+    400016: cactusSmall_B_3
+    400018: cactusSmall_B_4
+    400020: cactusSmall_C_1
+    400022: cactusSmall_C_2
+    400024: cactusSmall_C_3
+    400026: cactusSmall_C_4
+    400028: jnt_L_ankle
+    400030: jnt_L_ball
+    400032: jnt_L_hip
+    400034: jnt_L_knee
+    400036: jnt_L_toes
+    400038: jnt_R_ankle
+    400040: jnt_R_ball
+    400042: jnt_R_hip
+    400044: jnt_R_knee
+    400046: jnt_R_toes
+    400048: jnt_spA
+    400050: jnt_spB
+    400052: jnt_spC
+    400054: jnt_spD
+    400056: Joints
+    400058: Model
+    4300000: cactus
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: cactus
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
