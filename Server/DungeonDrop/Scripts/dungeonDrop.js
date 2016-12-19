@@ -27,12 +27,20 @@
         });
     }
 
+    // TODO: find where to put this?
+    hub.on('movePlayer', function (playerMovement) {
+        console.log('received playermovement');
+        //this.player.x = playerMovement.x;
+        //this.player.y = playerMovement.y;
+    });
+
     var playGame = function(game){};
 
     playGame.prototype = {
         preload: function () {
             game.load.image('map', 'Assets/level-map.png');
             game.load.image('cactus', 'Assets/cactus.png');
+            game.load.image('player', 'Assets/semi-closed-eye.png');
         },
         create: function () {
             game.stage.backgroundColor = '#0094ff';
@@ -65,7 +73,7 @@
                 this.scrollingMap.isBeingDragged = false;
             }, this);
 
-            
+            // set up catus tile
             this.cactus = game.add.sprite(0, 0, 'cactus');
             this.cactus.anchor.x = 0.5;
             this.cactus.anchor.y = 0.5;
@@ -75,6 +83,13 @@
             this.cactus.input.enableDrag();
             this.cactus.events.onDragStart.add(onDragStart, this);
             this.cactus.events.onDragStop.add(onDragStop, this);
+
+            // set up player icon
+            this.player = game.add.sprite(0, 0, 'player');
+            this.player.anchor.x = 0.5;
+            this.player.anchor.y = 0.5;
+            this.player.x = this.scrollingMap.width / 2;
+            this.player.y = this.scrollingMap.height / 2;
 
         },
         update: function () {
@@ -165,6 +180,9 @@
         }
 
     }
+
+    
+        
 
     function returnIcon(sprite) {
         // send back to original location

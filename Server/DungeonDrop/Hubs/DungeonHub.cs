@@ -1,5 +1,6 @@
 ﻿using DungeonDrop.Dtos;
 using Microsoft.AspNet.SignalR;
+using System.Diagnostics;
 
 namespace DungeonDrop.Hubs
 {
@@ -13,6 +14,11 @@ namespace DungeonDrop.Hubs
         public void Hello()
         {
             Clients.Others.sayHello();
+        }
+
+        public void MovePlayer(PlayerMovement playerMovement)
+        {
+            Clients.Others.movePlayer(playerMovement);
         }
     }
 }

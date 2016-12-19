@@ -100,6 +100,7 @@
   <ItemGroup>
     <Content Include="Assets\cactus.png" />
     <Content Include="Assets\level-map.png" />
+    <Content Include="Assets\semi-closed-eye.png" />
     <Content Include="Assets\wyvern.png" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\DungeonDrop - Web Deploy.pubxml" />
@@ -133,6 +134,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\PlayerMovement.cs" />
     <Compile Include="Dtos\MapDrop.cs" />
     <Compile Include="Hubs\DungeonHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,8 +1,7 @@
 ﻿namespace DungeonDrop.Dtos
 {
-    public class MapDrop
+    public class PlayerMovement
     {
-        public string identifier;
         public float x;
         public float y;
     }

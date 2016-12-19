@@ -12,6 +12,9 @@ public class SocketController : MonoBehaviour {
 
     public GameObject enemy;
     MapDrop enemyDto;
+    GameObject player;
+    float movePlayerEvery = 0.5f;
+    bool sendPlayerMovements = true;
 
     // Use this for initialization
     void Start () {
@@ -22,7 +25,7 @@ public class SocketController : MonoBehaviour {
         proxy.Subscribe("placeEnemy").Data += data =>
         {
             Debug.Log("new enemy drop");
-            enemyDto = JsonUtility.FromJson<MapDrop>(data[0].ToString());
+            enemyDto = MapDrop.CreateFromJSON(data[0].ToString());
         };
 
         proxy.Subscribe("sayHello").Data += data =>
@@ -37,16 +40,42 @@ public class SocketController : MonoBehaviour {
         {
             Debug.Log(ex.Message);
         }
-        
+
+        // store instance of Player
+        player = GameObject.Find("Player");
+        StartCoroutine(PlayerMove());
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 	    if(enemyDto != null)
         {
-            Debug.Log("dropping Enemy");
-            Instantiate(enemy, new Vector3(enemyDto.x, 0, enemyDto.y), Quaternion.identity);
-            enemyDto = null;
+            DropEnemy();
         }
-	}
+    }
+
+    private void DropEnemy()
+    {
+        Debug.Log("dropping Enemy");
+        Instantiate(enemy, new Vector3(enemyDto.x, 0, enemyDto.y), Quaternion.identity);
+        enemyDto = null;
+    }
+
+    IEnumerator PlayerMove()
+    {
+        while (sendPlayerMovements)
+        {
+            var playerMovement = new PlayerMovement()
+            {
+                x = player.transform.position.x,
+                y = player.transform.position.z
+            };
+            proxy.Invoke("MovePlayer", playerMovement).Finished += (sender, e) =>
+            {
+                Debug.Log("Sent player position: " + playerMovement);
+            };
+            yield return new WaitForSeconds(movePlayerEvery);
+        }
+    }
 }
