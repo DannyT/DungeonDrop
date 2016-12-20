@@ -3,7 +3,6 @@
     var connection = $.hubConnection();
     var hub = connection.createHubProxy("dungeonHub");
     
-    var tween;
     var returnToPos;
     var speedMult = 0.7;
     // this is the friction which will slow down the map. Must be less than 1
@@ -148,8 +147,14 @@
             }
 
             if ((playerPos != null) && (playerPos != lastKnownPlayerPos)) {
-                this.player.x = ((playerPos.x + (world.width / 2)) * scale) + this.scrollingMap.x;
-                this.player.y = ((playerPos.y * -1 + (world.height / 2)) * scale);
+
+                var newPos = {
+                    x: ((playerPos.x + (world.width / 2)) * scale) + this.scrollingMap.x,
+                    y:((playerPos.y * -1 + (world.height / 2)) * scale)
+                }
+
+                game.add.tween(this.player).to({ x: newPos.x, y: newPos.y }, 200, Phaser.Easing.Default, true);
+
                 console.log('setting player pos x:' + this.player.x + ' y:' + this.player.y);
                 lastKnownPlayerPos = playerPos;
             }

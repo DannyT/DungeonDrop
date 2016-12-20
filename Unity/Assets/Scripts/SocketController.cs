@@ -13,8 +13,8 @@ public class SocketController : MonoBehaviour {
     public GameObject enemy;
     MapDrop enemyDto;
     GameObject player;
-    float movePlayerEvery = 0.5f;
-    bool sendPlayerMovements = true;
+    float movePlayerEvery = 0.2f;
+    PlayerMovement positionCache;
 
     // Use this for initialization
     void Start () {
@@ -43,8 +43,7 @@ public class SocketController : MonoBehaviour {
 
         // store instance of Player
         player = GameObject.Find("Player");
-        StartCoroutine(PlayerMove());
-
+        InvokeRepeating("PlayerMove", movePlayerEvery, movePlayerEvery);
     }
 	
 	// Update is called once per frame
@@ -62,20 +61,25 @@ public class SocketController : MonoBehaviour {
         enemyDto = null;
     }
 
-    IEnumerator PlayerMove()
+    void PlayerMove()
     {
-        while (sendPlayerMovements)
+        var playerMovement = new PlayerMovement()
         {
-            var playerMovement = new PlayerMovement()
-            {
-                x = player.transform.position.x,
-                y = player.transform.position.z
-            };
+            x = player.transform.position.x,
+            y = player.transform.position.z
+        };
+
+        if (positionCache == null 
+            || (!Equals(playerMovement.x, positionCache.x) 
+            || !Equals(playerMovement.y, positionCache.y)))
+        {
             proxy.Invoke("MovePlayer", playerMovement).Finished += (sender, e) =>
             {
                 Debug.Log("Sent player position: " + playerMovement);
             };
-            yield return new WaitForSeconds(movePlayerEvery);
+
+            positionCache = playerMovement;
         }
+
     }
 }
