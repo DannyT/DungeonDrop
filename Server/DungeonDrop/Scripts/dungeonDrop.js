@@ -2,6 +2,7 @@
 {
     var connection = $.hubConnection();
     var hub = connection.createHubProxy("dungeonHub");
+    
     var tween;
     var returnToPos;
     var speedMult = 0.7;
@@ -11,6 +12,14 @@
         width: 16,
         height: 8
     };
+    var scale;
+    var playerPos, lastKnownPlayerPos;
+
+    // TODO: find where to put this?
+    hub.on('movePlayer', function (playerMovement) {
+        playerPos = playerMovement;
+        console.log('got player pos x:' + playerMovement.x + ' y:' + playerMovement.y);
+    });
 
     window.onload = function () {
         game = new Phaser.Game("100%", "100%", Phaser.AUTO, "");
@@ -26,13 +35,6 @@
             console.log('Connection faled with error:' + error);
         });
     }
-
-    // TODO: find where to put this?
-    hub.on('movePlayer', function (playerMovement) {
-        console.log('received playermovement');
-        //this.player.x = playerMovement.x;
-        //this.player.y = playerMovement.y;
-    });
 
     var playGame = function(game){};
 
@@ -73,6 +75,8 @@
                 this.scrollingMap.isBeingDragged = false;
             }, this);
 
+            scale = this.scrollingMap.width / world.width;
+
             // set up catus tile
             this.cactus = game.add.sprite(0, 0, 'cactus');
             this.cactus.anchor.x = 0.5;
@@ -90,7 +94,6 @@
             this.player.anchor.y = 0.5;
             this.player.x = this.scrollingMap.width / 2;
             this.player.y = this.scrollingMap.height / 2;
-
         },
         update: function () {
             // if the map is being dragged...
@@ -143,6 +146,13 @@
                     }
                 }
             }
+
+            if ((playerPos != null) && (playerPos != lastKnownPlayerPos)) {
+                this.player.x = ((playerPos.x + (world.width / 2)) * scale) + this.scrollingMap.x;
+                this.player.y = ((playerPos.y * -1 + (world.height / 2)) * scale);
+                console.log('setting player pos x:' + this.player.x + ' y:' + this.player.y);
+                lastKnownPlayerPos = playerPos;
+            }
         }
     }
 
@@ -160,7 +170,6 @@
             var tween2 = game.add.tween(sprite.scale).to({ x: 0.5, y: 0.5 }, 300, Phaser.Easing.Default, true);
             tween2.onComplete.add(function () { returnIcon(sprite) }, this);
 
-            var scale = this.scrollingMap.width / world.width;
             // send drop to server
             var mapDrop = {
                 identifier: 'cactus',
@@ -180,8 +189,6 @@
         }
 
     }
-
-    
         
 
     function returnIcon(sprite) {
