@@ -66,12 +66,15 @@ public class SocketController : MonoBehaviour {
         var playerMovement = new PlayerMovement()
         {
             x = player.transform.position.x,
-            y = player.transform.position.z
+            y = player.transform.position.z,
+            rotation = player.transform.eulerAngles.y
         };
 
         if (positionCache == null 
             || (!Equals(playerMovement.x, positionCache.x) 
-            || !Equals(playerMovement.y, positionCache.y)))
+                || !Equals(playerMovement.y, positionCache.y)
+                || !Equals(playerMovement.rotation, positionCache.rotation))
+            )
         {
             proxy.Invoke("MovePlayer", playerMovement).Finished += (sender, e) =>
             {

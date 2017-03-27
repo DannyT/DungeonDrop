@@ -12,12 +12,12 @@
         height: 8
     };
     var scale;
-    var playerPos, lastKnownPlayerPos;
+    var remotePlayerPos, localPlayerPos, lastKnownPlayerPos;
 
     // TODO: find where to put this?
     hub.on('movePlayer', function (playerMovement) {
-        playerPos = playerMovement;
-        console.log('got player pos x:' + playerMovement.x + ' y:' + playerMovement.y);
+        remotePlayerPos = playerMovement;
+        console.log('got player pos x:' + playerMovement.x + ' y:' + playerMovement.y + ' rotation:' + playerMovement.rotation);
     });
 
     window.onload = function () {
@@ -41,7 +41,7 @@
         preload: function () {
             game.load.image('map', 'Assets/level-map.png');
             game.load.image('cactus', 'Assets/cactus.png');
-            game.load.image('player', 'Assets/semi-closed-eye.png');
+            game.load.image('player', 'Assets/character-top-down.png');
         },
         create: function () {
             game.stage.backgroundColor = '#0094ff';
@@ -93,14 +93,20 @@
             this.player.anchor.y = 0.5;
             this.player.x = this.scrollingMap.width / 2;
             this.player.y = this.scrollingMap.height / 2;
+            localPlayerPos = {
+                x: this.player.x,
+                y: this.player.y,
+                rotation: this.player.rotation
+            };
         },
         update: function () {
             // if the map is being dragged...
             if (this.scrollingMap.isBeingDragged) {
                 // save current map position
                 this.scrollingMap.savedPosition = new Phaser.Point(this.scrollingMap.x, this.scrollingMap.y);
+                this.player.x = localPlayerPos.x + this.scrollingMap.x;
             }
-                // if the map is NOT being dragged...
+            // if the map is NOT being dragged...
             else {
                 // if the moving speed is greater than 1...
                 if (this.scrollingMap.movingSpeed > 1) {
@@ -146,17 +152,20 @@
                 }
             }
 
-            if ((playerPos != null) && (playerPos != lastKnownPlayerPos)) {
+            // if the player has moved
+            if ((remotePlayerPos != null) && (remotePlayerPos != lastKnownPlayerPos)) {
 
                 var newPos = {
-                    x: ((playerPos.x + (world.width / 2)) * scale) + this.scrollingMap.x,
-                    y:((playerPos.y * -1 + (world.height / 2)) * scale)
+                    x: ((remotePlayerPos.x + (world.width / 2)) * scale) + this.scrollingMap.x,
+                    y: ((remotePlayerPos.y * -1 + (world.height / 2)) * scale) + this.scrollingMap.y,
+                    rotation: this.player.rotation + getShortestAngle(remotePlayerPos.rotation, this.player.rotation)
                 }
 
-                game.add.tween(this.player).to({ x: newPos.x, y: newPos.y }, 200, Phaser.Easing.Default, true);
+                game.add.tween(this.player).to({ x: newPos.x, y: newPos.y, angle: newPos.rotation }, 200, Phaser.Easing.Default, true);
 
                 console.log('setting player pos x:' + this.player.x + ' y:' + this.player.y);
-                lastKnownPlayerPos = playerPos;
+                lastKnownPlayerPos = remotePlayerPos;
+                localPlayerPos = newPos;
             }
         }
     }
@@ -202,5 +211,13 @@
         sprite.scale.y = 1;
         sprite.x = returnToPos.x;
         sprite.y = returnToPos.y;
+    }
+
+    function getShortestAngle(angle1, angle2) {
+
+        var difference = angle2 - angle1;
+        var times = Math.floor((difference - (-180)) / 360);
+
+        return (difference - (times * 360)) * -1;
     }
 }($, Phaser));
